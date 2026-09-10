@@ -1,0 +1,215 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * AI Cognitia design system — calm, dementia-friendly healthcare UI.
+ * Deep blue + soft navy + warm white + light lavender + soft sky.
+ * All colors are oklch semantic tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+
+  --font-sans: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Nunito", "Atkinson Hyperlegible", ui-sans-serif, sans-serif;
+
+  --text-base: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.4rem;
+  --text-2xl: 1.65rem;
+  --text-3xl: 2rem;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-soft: var(--accent-soft);
+  --color-sky: var(--sky);
+  --color-sky-foreground: var(--sky-foreground);
+  --color-lavender: var(--lavender);
+  --color-lavender-foreground: var(--lavender-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-card: var(--shadow-card);
+  --shadow-lift: var(--shadow-lift);
+}
+
+:root {
+  --radius: 1.25rem;
+
+  --background: oklch(0.985 0.008 95);
+  --foreground: oklch(0.29 0.055 262);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.29 0.055 262);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.29 0.055 262);
+
+  --primary: oklch(0.45 0.125 255);
+  --primary-foreground: oklch(0.99 0.005 250);
+  --primary-soft: oklch(0.93 0.035 250);
+
+  --secondary: oklch(0.945 0.028 290);
+  --secondary-foreground: oklch(0.33 0.07 275);
+
+  --muted: oklch(0.955 0.014 255);
+  --muted-foreground: oklch(0.47 0.035 262);
+
+  --accent: oklch(0.56 0.13 300);
+  --accent-foreground: oklch(0.99 0.005 300);
+  --accent-soft: oklch(0.94 0.035 300);
+
+  --sky: oklch(0.93 0.045 235);
+  --sky-foreground: oklch(0.34 0.09 250);
+
+  --lavender: oklch(0.94 0.035 293);
+  --lavender-foreground: oklch(0.34 0.08 290);
+
+  --success: oklch(0.53 0.1 175);
+  --success-foreground: oklch(0.99 0.005 175);
+
+  --warning: oklch(0.72 0.13 70);
+  --warning-foreground: oklch(0.26 0.05 60);
+
+  --destructive: oklch(0.53 0.19 25);
+  --destructive-foreground: oklch(0.99 0.005 25);
+
+  --border: oklch(0.905 0.018 260);
+  --input: oklch(0.895 0.02 260);
+  --ring: oklch(0.55 0.11 258);
+
+  --shadow-soft: 0 1px 2px oklch(0.29 0.055 262 / 0.05);
+  --shadow-card: 0 6px 20px -8px oklch(0.29 0.055 262 / 0.16);
+  --shadow-lift: 0 16px 40px -18px oklch(0.29 0.055 262 / 0.28);
+}
+
+/* High contrast mode for low-vision users */
+.contrast-high {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.16 0.03 262);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.03 262);
+  --primary: oklch(0.32 0.14 258);
+  --primary-soft: oklch(0.9 0.05 255);
+  --secondary: oklch(0.93 0.03 290);
+  --secondary-foreground: oklch(0.18 0.05 275);
+  --muted: oklch(0.95 0.01 255);
+  --muted-foreground: oklch(0.28 0.03 262);
+  --accent: oklch(0.38 0.16 300);
+  --border: oklch(0.45 0.04 260);
+  --input: oklch(0.4 0.04 260);
+  --ring: oklch(0.25 0.1 258);
+}
+
+/* Larger text preference */
+.text-scale-large {
+  font-size: 118%;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 3px;
+  }
+}
+
+@utility surface-calm {
+  background-image: linear-gradient(180deg, var(--color-sky) 0%, var(--color-background) 55%);
+}
+
+@utility tap-target {
+  min-height: 3.5rem;
+  min-width: 3.5rem;
+}
+
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.92;
+  }
+}
+
+@keyframes soft-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-gentle-pulse {
+  animation: gentle-pulse 2.4s ease-in-out infinite;
+}
+
+@utility animate-soft-rise {
+  animation: soft-rise 0.45s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
